@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant Dashboard</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #eef2f3; }
+        .container { max-width: 800px; margin: 50px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn { display: inline-block; padding: 12px 18px; background: #007aff; color: white; text-decoration: none; border-radius: 6px; cursor: pointer; transition: 0.3s; margin: 5px; }
+        .btn:hover { background: #005bb5; }
+        .event-list { list-style: none; padding: 0; }
+        .event-list li { padding: 15px; margin: 10px 0; background: #f5f5f5; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Events</h1>
+        
+        <!-- List of participated events -->
+        <div id="participated-events">
+            <h2>Events I'm Participating In</h2>
+            <ul class="event-list">
+                <li>
+                    <h3>Example Event 1</h3>
+                    <p>Date: May 1-5, 2025</p>
+                    <p>Status: Registered</p>
+                </li>
+                <li>
+                    <h3>Example Event 2</h3>
+                    <p>Date: June 15-20, 2025</p>
+                    <p>Status: Pending</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Button to join new events -->
+        <a href="event-list.html" class="btn">Join a New Event</a>
+    </div>
+</body>
+</html>

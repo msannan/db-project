@@ -1,0 +1,46 @@
+<!-- creator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Dashboard</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #eef2f3; }
+        .container { max-width: 800px; margin: 50px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn { display: block; width: 100%; padding: 12px; background: #007aff; color: white; text-align: center; text-decoration: none; border-radius: 6px; margin: 10px 0; }
+        .btn:hover { background: #005bb5; }
+        .event-list { margin-top: 20px; }
+        .event-item { padding: 10px; background: #f8f9fa; margin: 5px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Creator Dashboard</h1>
+        <h2>Your Events</h2>
+        <div class="event-list" id="eventList">
+            <!-- Events will be dynamically loaded here -->
+        </div>
+        <a href="create-event.html" class="btn">Create New Event</a>
+    </div>
+
+    <script>
+        // Example: Fetching created events (this should be replaced with actual data fetching logic)
+        document.addEventListener("DOMContentLoaded", function() {
+            const eventList = document.getElementById("eventList");
+            const events = JSON.parse(localStorage.getItem("createdEvents")) || [];
+            
+            if (events.length === 0) {
+                eventList.innerHTML = "<p>No events created yet.</p>";
+            } else {
+                events.forEach(event => {
+                    const div = document.createElement("div");
+                    div.className = "event-item";
+                    div.textContent = event;
+                    eventList.appendChild(div);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

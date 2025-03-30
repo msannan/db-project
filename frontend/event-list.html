@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event List</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #eef2f3; }
+        .container { max-width: 800px; margin: 50px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn { display: inline-block; padding: 12px 18px; background: #007aff; color: white; text-decoration: none; border-radius: 6px; cursor: pointer; transition: 0.3s; margin: 5px; }
+        .btn:hover { background: #005bb5; }
+        .hidden { display: none; }
+        .event-list { list-style: none; padding: 0; }
+        .event-list li { padding: 15px; border-bottom: 1px solid #eee; cursor: pointer; }
+        .event-list li:hover { background-color: #f5f5f5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="eventList">
+            <h2>Available Events</h2>
+            <ul class="event-list">
+                <li onclick="showEventDetails(1)">Event 1</li>
+                <li onclick="showEventDetails(2)">Event 2</li>
+            </ul>
+        </div>
+
+        <div id="eventDetails" class="hidden">
+            <h2>Event Details</h2>
+            <p id="eventName">Name: </p>
+            <p id="eventStartDate">Start Date: </p>
+            <p id="eventEndDate">End Date: </p>
+            <button class="btn" onclick="showQuestions()">Participate</button>
+            <button class="btn" onclick="goBack()">Back to Events</button>
+        </div>
+
+        <div id="participantQuestions" class="hidden">
+            <h2>Answer Eligibility Questions</h2>
+            <form onsubmit="submitAnswers(event)">
+                <div id="questionsContainer">
+                    <label>Question 1:</label><input type="text" required>
+                    <label>Question 2:</label><input type="text" required>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+                <button type="button" class="btn" onclick="goBack()">Back</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showEventDetails(eventId) {
+            document.getElementById('eventList').classList.add('hidden');
+            document.getElementById('eventDetails').classList.remove('hidden');
+            
+            // Here you would normally fetch event details from a database
+            // For now, using sample data
+            document.getElementById('eventName').textContent = 'Name: Event ' + eventId;
+            document.getElementById('eventStartDate').textContent = 'Start Date: 2025-05-01';
+            document.getElementById('eventEndDate').textContent = 'End Date: 2025-05-05';
+        }
+
+        function showQuestions() {
+            document.getElementById('eventDetails').classList.add('hidden');
+            document.getElementById('participantQuestions').classList.remove('hidden');
+        }
+
+        function goBack() {
+            if (!document.getElementById('participantQuestions').classList.contains('hidden')) {
+                document.getElementById('participantQuestions').classList.add('hidden');
+                document.getElementById('eventDetails').classList.remove('hidden');
+            } else {
+                document.getElementById('eventDetails').classList.add('hidden');
+                document.getElementById('eventList').classList.remove('hidden');
+            }
+        }
+
+        function submitAnswers(event) {
+            event.preventDefault();
+            alert('Answers submitted successfully!');
+            // Here you would normally send the answers to a server
+            document.getElementById('eventList').classList.remove('hidden');
+            document.getElementById('participantQuestions').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
